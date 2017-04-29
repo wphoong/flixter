@@ -37,7 +37,7 @@ def current_course
 end
 
   def course_params
-    params.require(:course).permit(:title, :description, :cost, :image)
+    params.require(:course).permit(:title, :image, :description, :cost)
   end
 
 end
