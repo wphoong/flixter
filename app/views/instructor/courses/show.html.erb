@@ -6,9 +6,9 @@ $(function(){
     update: function( event, ui ){
       $.ajax({
         type: 'PUT',
-        url: ui.item.data('update-url'),
+        url: ui.item.data('update-url1'),
         dataType: 'json',
-        data: { lesson: { row_order_position: ui.item.index() } }
+        data: { section: { row_order_position: ui.item.index() } }
       });
     }
   });
@@ -18,7 +18,7 @@ $(function(){
     update: function( event, ui ){
       $.ajax({
         type: 'PUT',
-        url: ui.item.data('update-url'),
+        url: ui.item.data('update-url2'),
         dataType: 'json',
         data: { lesson: { row_order_position: ui.item.index() } }
       });
@@ -46,13 +46,13 @@ $(function(){
   
   <ul class='sections'>
     <% current_course.sections.rank(:row_order).each do |section| %>
-    <li data-update-url="<%= instructor_lesson_path(section) %>">
+    <li data-update-url1="<%= instructor_section_path(section) %>">
       <%= section.title %>
       <%= link_to 'New Lesson', new_instructor_section_lesson_path(section), class: 'float-right btn btn-primary btn-sm' %>
 
       <ul class="lessons">
         <% section.lessons.rank(:row_order).each do |lesson| %>
-        <li data-update-url="<%= instructor_lesson_path(lesson) %>">
+        <li data-update-url2="<%= instructor_lesson_path(lesson) %>">
           <b> <%= lesson.title %></b>
           -
           <%= lesson.subtitle %>
