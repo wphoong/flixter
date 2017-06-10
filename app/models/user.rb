@@ -7,12 +7,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-      
   def enrolled_in?(course)
     # enrolled_course = []
     # enrollments.each do |enrollment|
     # enrolled_course << enrollment.course
-    # end 
+    # end
 
     # enrolled_courses = enrollments.collect do |enrollment|
     #   enrollment.course
@@ -20,6 +19,6 @@ class User < ApplicationRecord
 
     # enrolled_course = enrollments.collect($:course)
 
-    return enrolled_courses.include?(course)
+    enrolled_courses.include?(course)
   end
 end

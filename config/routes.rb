@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
   root 'static_pages#index'
   get 'privacy', to: 'static_pages#privacy'
-  resources :courses, only: [:index, :show] do
+  resources :courses, only: %i[index show] do
     resources :enrollments, only: :create
   end
   resources :lessons, only: [:show]
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :sections, only: [:update] do
       resources :lessons, only: [:create]
     end
-     resources :courses, only: [:new, :create, :show] do
+    resources :courses, only: %i[new create show] do
       resources :sections, only: [:create]
     end
   end
